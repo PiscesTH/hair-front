@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { NavLink } from "react-router-dom";
 
 export const HeaderWrap = styled.div`
     position: fixed;
@@ -25,18 +26,30 @@ export const HeaderContainer = styled.div`
 `;
 
 export const HeaderLogo = styled.div`
+    padding: 6px 12px;
     font-weight: bold;
     font-size: 24px;
 `;
 
 export const HeaderNav = styled.nav`
-    width: 50%;
+    width: 20%;
     display: flex;
     gap: 10px;
     justify-content: space-between;
     flex-direction: row;
 `;
 
-export const HeaderBtn = styled.div`
+export const HeaderBtn = styled.button`
     width: 10%;
+`;
+
+export const StyledNavLink = styled(NavLink)`
+    padding: 6px 12px;
+    border-radius: 20px;
+    transition: 0.1s ease-out;
+
+    &:hover{
+        background-color: black;
+        color: white;
+    }
 `;

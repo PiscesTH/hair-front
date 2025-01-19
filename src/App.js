@@ -1,14 +1,15 @@
 import "./App.css";
 import { MainWrap, BodyWrap } from "./style/main.js";
 import { FooterWrap } from "./style/footer.js";
-import { TopBannerWrap } from "./style/banner.js";
+
 import Header from "./components/header.js";
+import Banner from "./components/banner.js";
 
 function App() {
   return (
       <BodyWrap>
         <Header></Header>
-        <TopBannerWrap>Banner</TopBannerWrap>
+        <Banner></Banner>
         <MainWrap>Main</MainWrap>
         <FooterWrap>Footer</FooterWrap>
       </BodyWrap>
