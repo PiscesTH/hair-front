@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const TopBannerWrap = styled.div`
@@ -20,23 +21,49 @@ export const BannerContainer = styled.div`
 `;
 
 export const BannerTitle = styled.div`
-    height: 60%;
-    padding: 10px;
+  height: 60%;
+  padding: 10px;
 `;
 
 export const BannerMenu = styled.div`
-    height: 30%;
-    width: 50%;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 10px;
+  height: 30%;
+  width: 50%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 18px;
 `;
 
-export const BannerMenuItem = styled.div`
-    width: 13%;
-    padding: 5px;
-    border-radius: 20px;
+export const BannerMenuItem = styled(NavLink)`
+  color: rgb(154, 154, 154);
+  width: 13%;
+  padding: 5px;
+  border-radius: 20px;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 30px;
+    height: 3px;
+    background: transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+  }
+
+  &.active {
+    border-radius: 40px;
+    background: white;
+    color: black;
+
+    &::after {
+      background: rgb(197, 31, 31); /* 활성 상태일 때 빨간 밑줄 */
+    }
+  }
 `;
