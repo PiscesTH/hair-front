@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const TopBannerWrap = styled.div`
   grid-area: banner;
   width: 100%;
-  height: 100%;
+  height: 233px;
   background-color: black;
   display: flex;
   justify-content: center;
@@ -18,11 +18,14 @@ export const BannerContainer = styled.div`
   padding: 20px 0;
   color: white;
   flex-direction: column;
+
 `;
 
 export const BannerTitle = styled.div`
-  height: 60%;
+  font-size: 35px;
   padding: 10px;
+  text-align: center;
+  margin: 30px 0;
 `;
 
 export const BannerMenu = styled.div`

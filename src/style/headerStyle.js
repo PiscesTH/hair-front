@@ -25,7 +25,7 @@ export const HeaderContainer = styled.div`
   align-items: center;
 `;
 
-export const HeaderLogo = styled.div`
+export const HeaderLogo = styled.a`
   padding: 6px 12px;
   font-weight: bold;
   font-size: 24px;
@@ -55,9 +55,10 @@ export const StyledNavLink = styled(NavLink)`
     color: white;
   }
 
-  &::after {
+
+  &.active::after {
     position: absolute;
-    display: none;
+    display: block;
     content: "";
     clear: both;
     width: 20px;
@@ -66,9 +67,5 @@ export const StyledNavLink = styled(NavLink)`
     left: 50%;
     transform: translateX(-50%);
     bottom: -7px;
-  }
-
-  &.active::after {
-    display: block;
   }
 `;

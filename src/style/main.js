@@ -6,7 +6,7 @@ export const BodyWrap = styled.div`
   width: 100%;
   height: 1200px;
   background-color: #9bd2ff;
-  grid-template-rows: 100px 200px auto 100px;
+  grid-template-rows: 100px 233px auto 100px;
   grid-template-areas: 
   "header"
   "banner"

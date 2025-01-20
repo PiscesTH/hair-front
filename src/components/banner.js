@@ -8,9 +8,9 @@ const Banner = () => {
         배너 영역
         </BannerTitle>
         <BannerMenu>
-            <BannerMenuItem to={"/1"}>item1</BannerMenuItem>
-            <BannerMenuItem to={"/2"}>item2</BannerMenuItem>
-            <BannerMenuItem to={"/3"}>item3</BannerMenuItem>
+            <BannerMenuItem to={"/a/1"}>item1</BannerMenuItem>
+            <BannerMenuItem to={"/a/2"}>item2</BannerMenuItem>
+            <BannerMenuItem to={"/a/3"}>item3</BannerMenuItem>
         </BannerMenu>
         </BannerContainer>
     </TopBannerWrap>

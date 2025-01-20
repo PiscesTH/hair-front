@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <HeaderWrap>
             <HeaderContainer>
-            <HeaderLogo>TH</HeaderLogo>
+            <HeaderLogo href="/">TH</HeaderLogo>
             <HeaderNav>
                 <StyledNavLink to={"/a"}>btn1</StyledNavLink>
                 <StyledNavLink to={"/b"}>btn2</StyledNavLink>
