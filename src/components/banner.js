@@ -5,7 +5,7 @@ const Banner = () => {
     <TopBannerWrap>
       <BannerContainer>
         <BannerTitle>
-        배너 영역
+        배너영역
         </BannerTitle>
         <BannerMenu>
             <BannerMenuItem to={"/a/1"}>item1</BannerMenuItem>

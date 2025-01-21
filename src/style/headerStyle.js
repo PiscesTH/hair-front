@@ -32,11 +32,12 @@ export const HeaderLogo = styled.a`
 `;
 
 export const HeaderNav = styled.nav`
-  width: 20%;
+  width: 25%;
   display: flex;
   gap: 10px;
   justify-content: space-between;
   flex-direction: row;
+  margin-left: 6%;
 `;
 
 export const HeaderBtn = styled.button`

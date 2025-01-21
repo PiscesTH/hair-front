@@ -43,10 +43,11 @@ export const BannerMenu = styled.div`
 
 export const BannerMenuItem = styled(NavLink)`
   color: rgb(154, 154, 154);
-  width: 13%;
+  width: 60px;
   padding: 5px;
   border-radius: 20px;
   position: relative;
+  text-align: center;
 
   &::after {
     position: absolute;

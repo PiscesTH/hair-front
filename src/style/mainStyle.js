@@ -11,7 +11,7 @@ export const BodyWrap = styled.div`
   "header"
   "banner"
   "main"
-  "footer"
+  "footer";
   `;
 
 export const MainWrap = styled.div`
@@ -19,4 +19,25 @@ export const MainWrap = styled.div`
   height: auto;
   background-color: beige;
   grid-area: main;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+`;
+
+export const MainMapContainer = styled.div`
+  width: 500px;
+  height: 500px;
+  background-color: blue;
+`;
+
+export const MainText = styled.div`
+  width: 500px;
+  height: 500px;
+  background-color: aliceblue;
+`;
+
+export const MainTitle = styled.div`
+  
 `;
