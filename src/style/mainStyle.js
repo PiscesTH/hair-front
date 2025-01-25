@@ -5,7 +5,6 @@ export const BodyWrap = styled.div`
   display: grid;
   width: 100%;
   height: 1200px;
-  background-color: #9bd2ff;
   grid-template-rows: 100px 233px auto 100px;
   grid-template-areas:
     "header"
@@ -17,7 +16,6 @@ export const BodyWrap = styled.div`
 export const MainWrap = styled.div`
   width: 100%;
   height: auto;
-  background-color: beige;
   grid-area: main;
   display: flex;
   flex-direction: column;
@@ -50,11 +48,24 @@ export const MainMapContainer = styled.div`
 export const MainTextContainer = styled.div`
   width: 500px;
   height: 500px;
-  background-color: aliceblue;
+  color: #8a8a8a;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
 
-export const MainText = styled.div`
+export const MainTextTitle = styled.div`
   padding: 10px 5px;
   width: 100%;
   min-height: 30px;
+  font-size: 1.5em;
+  font-weight: bold;
+`;
+
+export const MainTextContent = styled.div`
+  padding: 0 5px;
+  width: 100%;
+  font-size: 1em;
+  line-height: 1.7;
 `;

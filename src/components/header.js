@@ -9,8 +9,8 @@ const Header = () => {
             <HeaderContainer>
             <HeaderLogo href="/">TH</HeaderLogo>
             <HeaderNav>
-                <StyledNavLink to={"/a"}>btn1</StyledNavLink>
-                <StyledNavLink to={"/b"}>btn2</StyledNavLink>
+                <StyledNavLink to={"/introduction"}>소개</StyledNavLink>
+                <StyledNavLink to={"/infomation"}>정보</StyledNavLink>
                 <StyledNavLink to={"/c"}>btn3</StyledNavLink>
             </HeaderNav>
             <HeaderBtn>로그인 버튼</HeaderBtn>

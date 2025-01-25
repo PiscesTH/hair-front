@@ -2,33 +2,31 @@ import { Map, MapMarker } from "react-kakao-maps-sdk";
 import {
   MainContentsContainer,
   MainMapContainer,
-  MainText,
+  MainTextTitle,
   MainTextContainer,
   MainTitle,
   MainWrap,
+  MainTextContent,
 } from "../style/mainStyle";
 
 const center = { lat: 35.87514124558859, lng: 128.81137868953445 };
 
 const MyMap = () => {
   return (
-    <Map // 지도를 표시할 Container
+    <Map
       center={center}
       style={{
-        // 지도의 크기
         width: "500px",
         height: "500px",
       }}
-      level={4} // 지도의 확대 레벨
+      level={4}
     >
-      <MapMarker // 마커를 생성합니다
-        position={center}
-      />
+      <MapMarker position={center} />
     </Map>
   );
 };
 
-const Main = () => {
+const Way = () => {
   return (
     <MainWrap>
       <MainTitle>오시는 길</MainTitle>
@@ -37,13 +35,21 @@ const Main = () => {
           <MyMap></MyMap>
         </MainMapContainer>
         <MainTextContainer>
-            <MainText>하루헤어</MainText>
-            <MainText>예시 텍스트</MainText>
-            <MainText>예시 텍스트22</MainText>
+          <div>
+            <MainTextTitle>도로명</MainTextTitle>
+            <MainTextContent>
+              경북 경산시 진량읍 대학로 1052 <br />
+              1층 하루hairstylist
+            </MainTextContent>
+          </div>
+          <div>
+            <MainTextTitle>전화번호</MainTextTitle>
+            <MainTextContent>053-000-0000</MainTextContent>
+          </div>
         </MainTextContainer>
       </MainContentsContainer>
     </MainWrap>
   );
 };
 
-export default Main;
+export default Way;

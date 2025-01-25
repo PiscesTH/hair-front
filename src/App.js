@@ -5,14 +5,14 @@ import { FooterWrap } from "./style/footer.js";
 import Header from "./components/header.js";
 import Banner from "./components/banner.js";
 import React from "react";
-import Main from "./components/main.js";
+import MainPage from "./page/mainpage.js";
 
 function App() {
   return (
       <BodyWrap>
         <Header></Header>
         <Banner></Banner>
-        <Main></Main>
+        <MainPage></MainPage>
         <FooterWrap>Footer</FooterWrap>
       </BodyWrap>
   );

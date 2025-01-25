@@ -7,18 +7,18 @@ export const HeaderWrap = styled.div`
   left: 0;
   width: 100%;
   height: 100px;
-  background-color: #ccc;
   z-index: 1;
+  background-color: #fff;
   grid-area: header;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid rgba(219, 219, 219, 0.49);
 `;
 
 export const HeaderContainer = styled.div`
   width: 90%;
   height: 100%;
-  border: 1px solid violet;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
