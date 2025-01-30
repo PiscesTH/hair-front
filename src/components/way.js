@@ -28,7 +28,7 @@ const MyMap = () => {
 
 const Way = () => {
   return (
-    <MainWrap>
+    <>
       <MainTitle>오시는 길</MainTitle>
       <MainContentsContainer>
         <MainMapContainer>
@@ -48,7 +48,7 @@ const Way = () => {
           </div>
         </MainTextContainer>
       </MainContentsContainer>
-    </MainWrap>
+    </>
   );
 };
 

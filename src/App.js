@@ -9,12 +9,12 @@ import MainPage from "./page/mainpage.js";
 
 function App() {
   return (
-      <BodyWrap>
-        <Header></Header>
-        <Banner></Banner>
-        <MainPage></MainPage>
-        <FooterWrap>Footer</FooterWrap>
-      </BodyWrap>
+    <BodyWrap>
+      <Header></Header>
+      <Banner></Banner>
+      <MainPage></MainPage>
+      <FooterWrap>Footer</FooterWrap>
+    </BodyWrap>
   );
 }
 
