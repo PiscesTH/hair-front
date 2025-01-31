@@ -27,7 +27,7 @@ export const MainWrap = styled.div`
 export const MainTitle = styled.div`
   width: 100%;
   height: 100px;
-  font-size: 20px;
+  font-size: 30px;
   text-align: center;
 `;
 

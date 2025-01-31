@@ -11,5 +11,5 @@ export const PriceContainer = styled.div`
 
 export const PriceImage = styled.img`
     max-width: 100%;
-    height: auto;
+    height: ${(props) => (props.resizing ? "100%": "auto")};
 `;
