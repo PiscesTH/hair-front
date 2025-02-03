@@ -1,6 +1,6 @@
 import { PriceContainer, PriceImage } from "../style/mainImageStyle";
 
-const Price = ({resizing ,image}) => {
+const MainImage = ({resizing ,image}) => {
 
     return (
         <PriceContainer>
@@ -9,4 +9,4 @@ const Price = ({resizing ,image}) => {
     );
 }
 
-export default Price;
+export default MainImage;
