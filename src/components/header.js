@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { HeaderBtn, HeaderContainer, HeaderLogo, HeaderNav, HeaderWrap, StyledNavLink } from "../style/headerStyle"
+import { HeaderBtn, HeaderContainer, HeaderLogo, HeaderNav, HeaderWrap, LoginButton, StyledNavLink } from "../style/headerStyle"
 
 
 const Header = () => {
@@ -13,7 +13,7 @@ const Header = () => {
                 <StyledNavLink to={"/infomation"}>정보</StyledNavLink>
                 <StyledNavLink to={"/inquiry"}>문의하기</StyledNavLink>
             </HeaderNav>
-            <HeaderBtn>로그인 버튼</HeaderBtn>
+            <LoginButton>로그인</LoginButton>
             </HeaderContainer>
         </HeaderWrap>
     );

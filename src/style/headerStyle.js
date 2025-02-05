@@ -70,3 +70,22 @@ export const StyledNavLink = styled(NavLink)`
     bottom: -7px;
   }
 `;
+
+export const LoginButton = styled.button`
+  background-color: #4CAF50; /* 녹색 버튼 */
+  color: white;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+
+  &:hover {
+    background-color: #45a049; /* 살짝 어두운 녹색 */
+  }
+
+  &:active {
+    transform: scale(0.95); /* 클릭 시 작아지는 효과 */
+  }
+`;
