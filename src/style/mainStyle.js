@@ -42,7 +42,6 @@ export const MainContentsContainer = styled.div`
 export const MainMapContainer = styled.div`
   width: 500px;
   height: 500px;
-  background-color: blue;
 `;
 
 export const MainTextContainer = styled.div`

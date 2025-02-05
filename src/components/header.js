@@ -11,7 +11,7 @@ const Header = () => {
             <HeaderNav>
                 <StyledNavLink to={"/introduction"}>소개</StyledNavLink>
                 <StyledNavLink to={"/infomation"}>정보</StyledNavLink>
-                <StyledNavLink to={"/c"}>btn3</StyledNavLink>
+                <StyledNavLink to={"/inquiry"}>문의하기</StyledNavLink>
             </HeaderNav>
             <HeaderBtn>로그인 버튼</HeaderBtn>
             </HeaderContainer>

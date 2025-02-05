@@ -7,8 +7,10 @@ const Banner = () => {
     <TopBannerWrap>
       <BannerContainer>
         <Routes>
+          <Route path="/" element= {<BannerTitle>하루 헤어</BannerTitle>}></Route>
           <Route path="/introduction" element= {<BannerTitle>하루 헤어</BannerTitle>}></Route>
           <Route path="/infomation/*" element={<InfoMenu></InfoMenu>}></Route>
+          <Route path="/inquiry" element= {<BannerTitle>문의하기</BannerTitle>}></Route>
         </Routes>
         </BannerContainer>
     </TopBannerWrap>

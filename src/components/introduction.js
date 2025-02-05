@@ -8,7 +8,7 @@ import {
 } from "../style/introductionStyle";
 
 const Txt = () => {
-    "하루헤어는 하루하루 열심히 살자라는 의미로 시작하였습니다 고객에 편에 서서 고민할수 있는 사람좋은 미용인이 되려 노력하겠습니다 . 하루는 가발디자인과 미용을 같이 하고 있습니다. 언제든지 고민 있으신 분들은 상담받으러 편하게 들러 주세요!! 오시는 고객님들이 항상 즐겁고 신나는 하루가 되시길 바랍니다. 방문해주시는 고객님 감사합니다~^^";
+    // const text = "하루헤어는 하루하루 열심히 살자라는 의미로 시작하였습니다 고객에 편에 서서 고민할수 있는 사람좋은 미용인이 되려 노력하겠습니다 . 하루는 가발디자인과 미용을 같이 하고 있습니다. 언제든지 고민 있으신 분들은 상담받으러 편하게 들러 주세요!! 오시는 고객님들이 항상 즐겁고 신나는 하루가 되시길 바랍니다. 방문해주시는 고객님 감사합니다~^^";
 
     return (<IntroTxtContainer>
         <IntroTxt>
@@ -27,7 +27,7 @@ const Txt = () => {
 }
 
 const Introduction = () => {
-  const introImage = process.env.PUBLIC_URL + "/asset/images/IntroImage.jpg";
+  const introImage = process.env.PUBLIC_URL + "/asset/images/haru4.jpg";
 
   return (
     <IntroductionWrap>

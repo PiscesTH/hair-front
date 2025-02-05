@@ -18,6 +18,7 @@ const MyMap = () => {
       style={{
         width: "500px",
         height: "500px",
+        borderRadius: "10px"
       }}
       level={4}
     >
