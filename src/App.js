@@ -13,7 +13,7 @@ function App() {
       <Header></Header>
       <Banner></Banner>
       <MainPage></MainPage>
-      <FooterWrap>Footer</FooterWrap>
+      <FooterWrap>Copyright 2025. TH All rights reserved.</FooterWrap>
     </BodyWrap>
   );
 }

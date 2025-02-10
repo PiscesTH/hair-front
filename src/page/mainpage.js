@@ -6,6 +6,8 @@ import Introduction from "../components/introduction";
 import { Navigate } from "react-router-dom";
 import Home from "./homepage";
 import Inquiry from "../components/inquiry";
+import Login from "../components/login";
+import Signup from "../components/signup";
 
 const MainPage = () => {
   const priceImg = process.env.PUBLIC_URL + "/asset/images/price.png";
@@ -29,6 +31,8 @@ const MainPage = () => {
           <Route path="business-day" element={<BusinessDay/>}></Route>
         </Route>
         <Route path="/inquiry" element={<Inquiry></Inquiry>}></Route>
+        <Route path="login" element={<Login></Login>}></Route>
+        <Route path="register" element={<Signup></Signup>}></Route>
       </Routes>
     </MainWrap>
   );
