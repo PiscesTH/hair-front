@@ -21,6 +21,12 @@ const Header = () => {
     }
   };
 
+  const handleLogout = (e) => {
+    e.preventDefault();
+    setIsLogined(false);
+    navigate("/");
+  };
+
   return (
     <HeaderWrap>
       <HeaderContainer>
@@ -28,10 +34,15 @@ const Header = () => {
         <HeaderNav>
           <StyledNavLink to={"/introduction"}>소개</StyledNavLink>
           <StyledNavLink to={"/infomation"}>정보</StyledNavLink>
-          <StyledNavLink to={"/inquiry"} onClick={checkLogined}>문의하기</StyledNavLink>
+          <StyledNavLink to={"/inquiry"} onClick={checkLogined}>
+            문의하기
+          </StyledNavLink>
         </HeaderNav>
-        {/* <LoginButton>로그인</LoginButton> */}
-        <StyledNavLink to={"/login"}>로그인</StyledNavLink>
+        {isLogined ? (
+          <StyledNavLink to={""} onClick={handleLogout}>로그아웃</StyledNavLink>
+        ) : (
+          <StyledNavLink to={"/login"}>로그인</StyledNavLink>
+        )}
       </HeaderContainer>
     </HeaderWrap>
   );
