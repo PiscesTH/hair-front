@@ -47,15 +47,15 @@ export const Chat = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  width: 600px;
-  height: 400px;
+  width: 700px;
+  height: 500px;
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
 `;
 
 export const UserList2 = styled.div`
-  width: 30%;
+  width: 20%;
   background: #f4f4f4;
   padding: 10px;
   border-right: 1px solid #ddd;
@@ -74,7 +74,7 @@ export const UserItem = styled.div`
 `;
 
 export const ChatWindow = styled.div`
-  width: 70%;
+  width: 80%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -95,7 +95,7 @@ export const ChatMessages = styled.div`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 `;
 
 export const ChatInput = styled.input`

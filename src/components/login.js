@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 
 const Container = styled.div`
   width: 100%;
@@ -51,13 +52,19 @@ const Login = () => {
     const [uid, setUid] = useState("xodus12");
     const [password, setPassword] = useState("xptmxm12!@");
     const [error, setError] = useState("");
-    // const { login } = useAuth();
+    const { login } = useAuth();
   
     let navigate = useNavigate();
   
     // 로그인 버튼 클릭 시 호출되는 함수입니다.
     const handleLogin = async (e) => {
       e.preventDefault(); // 페이지 새로고침 방지
+      login();
+      if (window.history.length > 1) {
+        navigate(-1);
+      } else {
+        navigate("/"); // 기본 이동할 페이지
+      }
   
 //       // 예제: 이메일과 비밀번호가 비어 있는지 확인
 //       if (uid === "" || password === "") {

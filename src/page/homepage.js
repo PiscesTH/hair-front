@@ -34,8 +34,8 @@ const Home = () => {
         modules={[Autoplay]}
         className="mySwiper"
       >
-        {images.map((image) => (
-          <SwiperSlide><img src={image} alt=""></img></SwiperSlide>
+        {images.map((image, index) => (
+          <SwiperSlide key={`slide-${index}`}><img src={image} alt=""></img></SwiperSlide>
         ))}
       </Swiper>
     </SwiperContainer>

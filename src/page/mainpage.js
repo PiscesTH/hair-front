@@ -15,7 +15,7 @@ const MainPage = () => {
 
   const BusinessDay = () => {
     return (
-      <MainImage resizing={true} image={businessDayImg}></MainImage>
+      <MainImage resizing={"1"} image={businessDayImg}></MainImage>
     );
   }
 
