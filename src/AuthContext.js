@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-// import axios from "./axios";
+import axios from "./axios";
 
 // AuthContext 생성
 const AuthContext = createContext();
@@ -13,21 +13,21 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // useEffect(() => {
-  //   const token = sessionStorage.getItem("accessToken");
-  //   if (token) {
-  //     setIsLoggedIn(true);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const token = sessionStorage.getItem("accessToken");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const login = (token) => {
-    // sessionStorage.setItem("accessToken", token);
+    sessionStorage.setItem("accessToken", token);
     setIsLoggedIn(true);
   };
 
   const logout = async () => {
-    // await axios.post("/user/sign-out");
-    // sessionStorage.clear();
+    await axios.post("/user/sign-out");
+    sessionStorage.clear();
     setIsLoggedIn(false);
     window.location.href = "/";
   };

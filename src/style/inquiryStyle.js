@@ -107,9 +107,9 @@ export const ChatInput = styled.input`
 `;
 
 export const Message = styled.div`
-  align-self: ${(props) => (props.isMe ? "flex-end" : "flex-start")};
-  background: ${(props) => (props.isMe ? "#4CAF50" : "#ddd")};
-  color: ${(props) => (props.isMe ? "white" : "black")};
+  align-self: ${(props) => (props.isMe ? "flex-start" : "flex-end")};
+  background: ${(props) => (props.isMe ? "#ddd" : "#4CAF50")};
+  color: ${(props) => (props.isMe ? "black" : "white")};
   padding: 5px;
   border-radius: 7px;
 `;
