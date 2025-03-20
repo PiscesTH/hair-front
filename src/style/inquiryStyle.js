@@ -98,12 +98,32 @@ export const ChatMessages = styled.div`
   gap: 10px;
 `;
 
-export const ChatInput = styled.input`
-  width: 100%;
-  padding: 10px;
+export const ChatInputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 간격 조정 */
   margin-top: 10px;
+`;
+
+export const ChatInput = styled.input`
+  flex-grow: 1; /* 입력창이 자동으로 확장되도록 설정 */
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+`;
+
+export const SendButton = styled.button`
+  padding: 10px 15px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #0056b3;
+  }
 `;
 
 export const Message = styled.div`

@@ -11,6 +11,9 @@ import {
   ChatInput,
   ChatMessages,
   Message,
+  ChatInputContainer,
+  SendButton,
+  SendMessageButton,
 } from "../style/inquiryStyle";
 import { useState, useEffect } from "react";
 import axios from "../axios";
@@ -20,8 +23,6 @@ const users = [
   { id: 2, name: "태연" },
   { id: 3, name: "태하" },
 ];
-
-
 
 const Inquiry = () => {
   return (
@@ -40,49 +41,52 @@ const Inquiry = () => {
 
 const ChatApp = () => {
   useEffect(() => {
-     const fetchData = async() => {
+    const fetchData = async () => {
       try {
         const res = await axios.get("/chat/chatList");
         setUserList(res.data.data);
       } catch (err) {
         console.log(err);
       }
-     }
+    };
     fetchData();
-  }, [])
+  }, []);
 
   const [userList, setUserList] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState();
 
-  const handleSendMessage = (e) => {
-    if (e.key === "Enter" && selectedUser) {
-      const text = e.target.value.trim();
-      if (!text) return;
-
-      setMessages((prev) => ({
-        ...prev,
-        [selectedUser.id]: [
-          ...(prev[selectedUser.id] || []),
-          { text, sender: true }, // 현재 사용자가 보낸 메시지
-        ],
-      }));
-
-      e.target.value = "";
+  const handleSendMessage = async () => {
+    if (!message) return;
+      try {
+        const res = await axios.post("/chat/message", {
+          ichat: selectedUser.ichat,
+          message: message
+        });
+        console.log(res);
+      } catch (err) {
+        console.log(err)
+      }
     }
-  };
+
+  const sendMessageByEnter = (e) => {
+    if (e.key === 'Enter') {
+      handleSendMessage();
+    }
+  }
 
   const selectUser = async (user) => {
     setSelectedUser(user);
     const res = await axios.get("/chat/message", {
       params: {
-        ichat: user.ichat
-      }
+        ichat: user.ichat,
+      },
     });
     console.log(res.data.data);
     console.log(user);
     setMessages(res.data.data);
-  }
+  };
 
   return (
     <Container>
@@ -91,7 +95,7 @@ const ChatApp = () => {
         {userList.map((user) => (
           <UserItem
             key={user.ichat + user.receiverName}
-            selected={selectedUser?.id === user.id}
+            selected={selectedUser?.receiverPk === user.receiverPk}
             onClick={() => selectUser(user)}
           >
             {user.receiverName}
@@ -106,16 +110,24 @@ const ChatApp = () => {
             <ChatHeader>{selectedUser.receiverName} 님과의 채팅</ChatHeader>
             <ChatMessages>
               {(messages || []).map((msg, index) => (
-                <Message key={index} isMe={selectedUser.receiverPk === msg.senderPk}>
+                <Message
+                  key={index}
+                  isMe={selectedUser.receiverPk === msg.senderPk}
+                >
                   {msg.message}
                 </Message>
               ))}
             </ChatMessages>
-            <ChatInput
-              type="text"
-              placeholder="메시지를 입력하세요..."
-              onKeyDown={handleSendMessage}
-            />
+            <ChatInputContainer>
+              <ChatInput
+                type="text"
+                placeholder="메시지를 입력하세요..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                onKeyDown={sendMessageByEnter}
+              />
+              <SendButton onClick={handleSendMessage}>보내기</SendButton>
+            </ChatInputContainer>
           </>
         ) : (
           <ChatHeader>유저를 선택하세요</ChatHeader>
