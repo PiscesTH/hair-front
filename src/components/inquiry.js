@@ -17,6 +17,7 @@ import {
 } from "../style/inquiryStyle";
 import { useState, useEffect } from "react";
 import axios from "../axios";
+import ChatRoom from "./chatRoom";
 
 const users = [
   { id: 1, name: "윤하" },
@@ -59,22 +60,22 @@ const ChatApp = () => {
 
   const handleSendMessage = async () => {
     if (!message) return;
-      try {
-        const res = await axios.post("/chat/message", {
-          ichat: selectedUser.ichat,
-          message: message
-        });
-        console.log(res);
-      } catch (err) {
-        console.log(err)
-      }
+    try {
+      const res = await axios.post("/chat/message", {
+        ichat: selectedUser.ichat,
+        message: message,
+      });
+      console.log(res);
+    } catch (err) {
+      console.log(err);
     }
+  };
 
   const sendMessageByEnter = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleSendMessage();
     }
-  }
+  };
 
   const selectUser = async (user) => {
     setSelectedUser(user);
@@ -106,29 +107,7 @@ const ChatApp = () => {
       {/* 채팅 화면 */}
       <ChatWindow>
         {selectedUser ? (
-          <>
-            <ChatHeader>{selectedUser.receiverName} 님과의 채팅</ChatHeader>
-            <ChatMessages>
-              {(messages || []).map((msg, index) => (
-                <Message
-                  key={index}
-                  isMe={selectedUser.receiverPk === msg.senderPk}
-                >
-                  {msg.message}
-                </Message>
-              ))}
-            </ChatMessages>
-            <ChatInputContainer>
-              <ChatInput
-                type="text"
-                placeholder="메시지를 입력하세요..."
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                onKeyDown={sendMessageByEnter}
-              />
-              <SendButton onClick={handleSendMessage}>보내기</SendButton>
-            </ChatInputContainer>
-          </>
+          <ChatRoom selectedUser={selectedUser}></ChatRoom>
         ) : (
           <ChatHeader>유저를 선택하세요</ChatHeader>
         )}

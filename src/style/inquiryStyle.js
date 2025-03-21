@@ -127,9 +127,9 @@ export const SendButton = styled.button`
 `;
 
 export const Message = styled.div`
-  align-self: ${(props) => (props.isMe ? "flex-start" : "flex-end")};
-  background: ${(props) => (props.isMe ? "#ddd" : "#4CAF50")};
-  color: ${(props) => (props.isMe ? "black" : "white")};
+  align-self: ${(props) => (props.receiver ? "flex-start" : "flex-end")};
+  background: ${(props) => (props.receiver ? "#ddd" : "#4CAF50")};
+  color: ${(props) => (props.receiver ? "black" : "white")};
   padding: 5px;
   border-radius: 7px;
 `;
