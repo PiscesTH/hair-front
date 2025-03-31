@@ -12,11 +12,20 @@ import axios from "../axios";
 
 const ChatRoom = ({ selectedUser }) => {
   const [messages, setMessages] = useState([]);
-  const [message, setMessage] = useState();
+  const [message, setMessage] = useState("");
   const socketRef = useRef(null);
   const chatRoomId = selectedUser.ichat;
 
   useEffect(() => {
+    const fetchData = async() => {
+      const res = await axios.get("/chat/message", {
+        params: {
+          ichat: selectedUser.ichat,
+        },
+      });
+      setMessages(res.data.data);
+      }
+      fetchData();
     // WebSocket 연결 설정
     socketRef.current = new WebSocket(`ws://localhost:8080/ws/chat?chatRoomId=${chatRoomId}`);
 
@@ -26,6 +35,7 @@ const ChatRoom = ({ selectedUser }) => {
 
     socketRef.current.onmessage = (event) => {
         const receivedMessage = JSON.parse(event.data);
+        console.log(receivedMessage);
         setMessages((prev) => [...prev, receivedMessage]);
     };
 
@@ -36,6 +46,7 @@ const ChatRoom = ({ selectedUser }) => {
     return () => {
         socketRef.current.close();
     };
+
 }, [chatRoomId]);
 
   const handleSendMessage = async () => {
@@ -43,6 +54,7 @@ const ChatRoom = ({ selectedUser }) => {
       const chatMessage = {
         ichat: selectedUser.ichat,
         message: message,
+        receiverPk: selectedUser.receiverPk
       };
 
       // 🔹 1. WebSocket을 통해 메시지 실시간 전송
@@ -51,8 +63,10 @@ const ChatRoom = ({ selectedUser }) => {
       const res = await axios.post("/chat/message", {
         ichat: selectedUser.ichat,
         message: message,
+        recieverPk: selectedUser.receiverPk
       });
       console.log(res);
+      console.log(selectedUser.receiverPk);
     } catch (err) {
       console.log(err);
     }
@@ -71,7 +85,7 @@ const ChatRoom = ({ selectedUser }) => {
       <ChatHeader>{selectedUser.receiverName} 님과의 채팅</ChatHeader>
       <ChatMessages>
         {(messages || []).map((msg, index) => (
-          <Message key={index} isMe={selectedUser.receiverPk === msg.senderPk}>
+          <Message key={index} receiver={selectedUser.receiverPk !== msg.senderPk}>
             {msg.message}
           </Message>
         ))}
