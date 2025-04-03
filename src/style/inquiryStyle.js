@@ -1,48 +1,48 @@
 import styled from "styled-components";
 
 export const InquiryConainer = styled.div`
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 `;
 
 export const UserListContainer = styled.div`
-    width: 300px;
-    height: 500px;
-    background-color: #ccc;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
+  width: 300px;
+  height: 500px;
+  background-color: #ccc;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 export const UserList = styled.div`
-    width: 90%;
-    height: auto;
-    padding: 5px 0;
-    background-color: beige;
+  width: 90%;
+  height: auto;
+  padding: 5px 0;
+  background-color: beige;
 `;
 
 export const ChatContainer = styled.div`
-    width: 500px;
-    height: 500px;
-    background-color: #ccc;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px 5px;
+  width: 500px;
+  height: 500px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 5px;
 `;
 
 export const Chat = styled.div`
-    width: 80%;
-    height: auto;
-    padding: 5px 0;
-    background-color: beige;
+  width: 80%;
+  height: auto;
+  padding: 5px 0;
+  background-color: beige;
 `;
 
 export const Container = styled.div`
@@ -115,21 +115,21 @@ export const ChatInput = styled.input`
 export const SendButton = styled.button`
   padding: 10px 15px;
   border: none;
-  background-color: #007bff;
+  background-color: black;
   color: white;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
 
   &:hover {
-    background-color: #0056b3;
+    background-color:#6b6b6b;
   }
 `;
 
 export const Message = styled.div`
-  align-self: ${(props) => (props.receiver ? "flex-start" : "flex-end")};
-  background: ${(props) => (props.receiver ? "#ddd" : "#4CAF50")};
-  color: ${(props) => (props.receiver ? "black" : "white")};
+  align-self: ${(props) => (props.$isReceiver ? "flex-start" : "flex-end")};
+  background: ${(props) => (props.$isReceiver ? "#ddd" : "#4CAF50")};
+  color: ${(props) => (props.$isReceiver ? "black" : "white")};
   padding: 5px;
   border-radius: 7px;
 `;

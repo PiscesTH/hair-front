@@ -14,7 +14,7 @@ const ChatApp = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get("/chat/chatList");
-        setUserList(res.data.data);
+        setChatList(res.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -22,32 +22,28 @@ const ChatApp = () => {
     fetchData();
   }, []);
 
-  const [userList, setUserList] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
-
-  const selectUser = async (user) => {
-    setSelectedUser(user);
-  };
+  const [chatList, setChatList] = useState([]);
+  const [selectedChat, setSelectedChat] = useState(null);
 
   return (
     <Container>
       {/* 유저 목록 */}
       <UserList2>
-        {userList.map((user) => (
+        {chatList.map((chat) => (
           <UserItem
-            key={user.ichat + user.receiverName}
-            selected={selectedUser?.receiverPk === user.receiverPk}
-            onClick={() => selectUser(user)}
+            key={chat.ichat + chat.receiver}
+            selected={selectedChat?.receiver === chat.receiver}
+            onClick={() => setSelectedChat(chat)}
           >
-            {user.receiverName}
+            {chat.receiver}
           </UserItem>
         ))}
       </UserList2>
 
       {/* 채팅 화면 */}
       <ChatWindow>
-        {selectedUser ? (
-          <ChatRoom selectedUser={selectedUser}></ChatRoom>
+        {selectedChat ? (
+          <ChatRoom selectedChat={selectedChat}></ChatRoom>
         ) : (
           <ChatHeader>유저를 선택하세요</ChatHeader>
         )}

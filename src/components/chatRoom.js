@@ -10,69 +10,74 @@ import {
 import { useState, useEffect, useRef } from "react";
 import axios from "../axios";
 
-const ChatRoom = ({ selectedUser }) => {
+const ChatRoom = ({ selectedChat }) => {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const socketRef = useRef(null);
-  const chatRoomId = selectedUser.ichat;
+  const messagesEndRef = useRef(null); // 스크롤 이동을 위한 ref
+  const isFirstLoad = useRef(true);
 
   useEffect(() => {
-    const fetchData = async() => {
+    const fetchData = async () => {
       const res = await axios.get("/chat/message", {
         params: {
-          ichat: selectedUser.ichat,
+          ichat: selectedChat.ichat,
         },
       });
       setMessages(res.data.data);
-      }
-      fetchData();
+    };
+    fetchData();
     // WebSocket 연결 설정
-    socketRef.current = new WebSocket(`ws://localhost:8080/ws/chat?chatRoomId=${chatRoomId}`);
+    socketRef.current = new WebSocket(
+      `ws://localhost:8080/ws/chat?chatRoomId=${selectedChat.ichat}`
+    );
 
     socketRef.current.onopen = () => {
-        console.log("WebSocket 연결됨");
+      // console.log("WebSocket 연결됨");
     };
 
     socketRef.current.onmessage = (event) => {
-        const receivedMessage = JSON.parse(event.data);
-        console.log(receivedMessage);
-        setMessages((prev) => [...prev, receivedMessage]);
+      const receivedMessage = JSON.parse(event.data);
+      setMessages((prev) => [...prev, receivedMessage]);
     };
 
     socketRef.current.onclose = () => {
-        console.log("WebSocket 연결 종료됨");
+      // console.log("WebSocket 연결 종료됨");
     };
 
     return () => {
-        socketRef.current.close();
+      socketRef.current.close();
     };
+  }, [selectedChat.ichat]);
 
-}, [chatRoomId]);
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({
+        behavior: isFirstLoad.current ? "auto" : "smooth",
+    });
+    isFirstLoad.current = false; // 첫 로딩 후에는 부드럽게 스크롤
+}, [messages]);
 
   const handleSendMessage = async () => {
     if (message.trim() && socketRef.current) {
       const chatMessage = {
-        ichat: selectedUser.ichat,
+        ichat: selectedChat.ichat,
         message: message,
-        receiverPk: selectedUser.receiverPk
+        sender: selectedChat.sender,
       };
 
       // 🔹 1. WebSocket을 통해 메시지 실시간 전송
       socketRef.current.send(JSON.stringify(chatMessage));
-    try {
-      const res = await axios.post("/chat/message", {
-        ichat: selectedUser.ichat,
-        message: message,
-        recieverPk: selectedUser.receiverPk
-      });
-      console.log(res);
-      console.log(selectedUser.receiverPk);
-    } catch (err) {
-      console.log(err);
+      try {
+        const res = await axios.post("/chat/message", {
+          ichat: selectedChat.ichat,
+          message: message,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+      setMessage("");
     }
-    setMessage("");
-  }
-};
+  };
 
   const sendMessageByEnter = (e) => {
     if (e.key === "Enter") {
@@ -82,13 +87,17 @@ const ChatRoom = ({ selectedUser }) => {
 
   return (
     <>
-      <ChatHeader>{selectedUser.receiverName} 님과의 채팅</ChatHeader>
+      <ChatHeader>{selectedChat.receiver} 님과의 채팅</ChatHeader>
       <ChatMessages>
         {(messages || []).map((msg, index) => (
-          <Message key={index} receiver={selectedUser.receiverPk !== msg.senderPk}>
+          <Message
+            key={index}
+            $isReceiver={selectedChat.receiver === msg.sender}
+          >
             {msg.message}
           </Message>
         ))}
+        <div ref={messagesEndRef} />
       </ChatMessages>
       <ChatInputContainer>
         <ChatInput
