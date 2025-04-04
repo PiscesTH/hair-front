@@ -59,12 +59,7 @@ const Login = () => {
     // 로그인 버튼 클릭 시 호출되는 함수입니다.
     const handleLogin = async (e) => {
       e.preventDefault(); // 페이지 새로고침 방지
-      login();
-      if (window.history.length > 1) {
-        navigate(-1);
-      } else {
-        navigate("/"); // 기본 이동할 페이지
-      }
+
   
       // 예제: 이메일과 비밀번호가 비어 있는지 확인
       if (uid === "" || password === "") {
@@ -83,9 +78,11 @@ const Login = () => {
           sameSite: "Strict", // 같은 사이트에서만 요청
         }); */
         login(accessToken);
-        alert("로그인 성공");
-        navigate("/");
-        window.location.reload();
+        if (window.history.length > 1) {
+          navigate(-1);
+        } else {
+          navigate("/"); // 기본 이동할 페이지
+        }
       } catch (error) {
         setError(error.response.data.message);
         alert("로그인 실패");

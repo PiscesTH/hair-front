@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import axios from "../axios";
 
 function Signup() {
   const [uid, setUid] = useState("");
@@ -44,7 +45,7 @@ function Signup() {
     setError("");
 
     try {
-    //   await axios.post("/user/sign-up", formData);
+      const res = await axios.post("/user/sign-up", formData);
       alert("회원가입 완료 !");
       navigate("/login");
     } catch (error) {

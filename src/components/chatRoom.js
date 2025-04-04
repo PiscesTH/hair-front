@@ -27,10 +27,14 @@ const ChatRoom = ({ selectedChat }) => {
       setMessages(res.data.data);
     };
     fetchData();
+
+    const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+    const host = window.location.host; // 자동으로 현재 호스트 가져오기
+    const wsUrl = `${protocol}://${host}/ws/chat?chatRoomId=${selectedChat.ichat}`;
+    // const wsUrl = `${protocol}://localhost:8080/ws/chat?chatRoomId=${selectedChat.ichat}`; //local 테스트용
+
     // WebSocket 연결 설정
-    socketRef.current = new WebSocket(
-      `ws://localhost:8080/ws/chat?chatRoomId=${selectedChat.ichat}`
-    );
+    socketRef.current = new WebSocket(wsUrl);
 
     socketRef.current.onopen = () => {
       // console.log("WebSocket 연결됨");
@@ -43,6 +47,7 @@ const ChatRoom = ({ selectedChat }) => {
 
     socketRef.current.onclose = () => {
       // console.log("WebSocket 연결 종료됨");
+      
     };
 
     return () => {
@@ -52,10 +57,10 @@ const ChatRoom = ({ selectedChat }) => {
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({
-        behavior: isFirstLoad.current ? "auto" : "smooth",
+      behavior: isFirstLoad.current ? "auto" : "smooth",
     });
     isFirstLoad.current = false; // 첫 로딩 후에는 부드럽게 스크롤
-}, [messages]);
+  }, [messages]);
 
   const handleSendMessage = async () => {
     if (message.trim() && socketRef.current) {
