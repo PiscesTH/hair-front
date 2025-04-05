@@ -14,7 +14,7 @@ const ChatRoom = ({ selectedChat }) => {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const socketRef = useRef(null);
-  const messagesEndRef = useRef(null); // 스크롤 이동을 위한 ref
+  const messagesEndRef = useRef(null);
   const isFirstLoad = useRef(true);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const ChatRoom = ({ selectedChat }) => {
           ichat: selectedChat.ichat,
         },
       });
-      setMessages(res.data.data);
+      setMessages(res.data.data || []);
     };
     fetchData();
 
