@@ -56,12 +56,9 @@ const Login = () => {
   
     let navigate = useNavigate();
   
-    // 로그인 버튼 클릭 시 호출되는 함수입니다.
-    const handleLogin = async (e) => {
-      e.preventDefault(); // 페이지 새로고침 방지
+    const handleLogin = async ({e, uid, password}) => {
+      e.preventDefault();
 
-  
-      // 예제: 이메일과 비밀번호가 비어 있는지 확인
       if (uid === "" || password === "") {
         setError("아이디 비밀번호를 입력해주세요.");
         return;
@@ -81,7 +78,7 @@ const Login = () => {
         if (window.history.length > 1) {
           navigate(-1);
         } else {
-          navigate("/"); // 기본 이동할 페이지
+          navigate("/");
         }
       } catch (error) {
         setError(error.response.data.message);
@@ -89,14 +86,13 @@ const Login = () => {
       }
     };
   
-    // 회원가입 버튼 클릭 시 호출되는 함수입니다.
     const handleRegister = () => {
       navigate("/register");
     };
 
   return (
     <Container>
-      <Form onSubmit={handleLogin}>
+      <Form onSubmit={(e) => handleLogin({e, uid, password})}>
         <InputContainer>
           <label htmlFor="uid">아이디</label>
           <Input
@@ -122,6 +118,7 @@ const Login = () => {
         <Button type="submit">로그인</Button>
       </Form>
       <Button onClick={handleRegister}>회원가입</Button>
+      <Button onClick={(e) => handleLogin({ e, uid: 'haruhair', password: 'xptmxm12!@' })}>테스트용 관리자 로그인</Button>
     </Container>
   );
 };
