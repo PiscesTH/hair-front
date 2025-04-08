@@ -45,7 +45,7 @@ const ChatApp = () => {
         {selectedChat ? (
           <ChatRoom selectedChat={selectedChat}></ChatRoom>
         ) : (
-          <ChatHeader>유저를 선택하세요</ChatHeader>
+          <ChatHeader>대화상대를 선택해주세요</ChatHeader>
         )}
       </ChatWindow>
     </Container>
