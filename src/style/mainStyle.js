@@ -22,6 +22,7 @@ export const MainWrap = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  background-color: white;
 `;
 
 export const MainTitle = styled.div`
